@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <title>Age Calculator</title>
+      <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+      <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+      <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+      <!-- Javascript -->
+      <script>
+         $(function() {
+            $( "#datepicker-13" ).datepicker();
+            $( "#datepicker-13" ).datepicker("show");
+         });
+
+         function myFunction() {
+           var today = new Date(), // today date object
+         birthday_val = $("#datepicker-13").val().split('/'), // input value
+         birthday = new Date(birthday_val[2],birthday_val[0]-1,birthday_val[1]), // birthday date object
+         todayYear = today.getFullYear(), // today year
+         todayMonth = today.getMonth(), // today month
+         todayDay = today.getDate(), // today day of month
+         birthdayYear = birthday.getFullYear(), // birthday year
+         birthdayMonth = birthday.getMonth(), // birthday month
+         birthdayDay = birthday.getDate(), // birthday day of month
+         // calculate age
+         age = (todayMonth == birthdayMonth && todayDay > birthdayDay) ?
+               todayYear - birthdayYear : (todayMonth > birthdayMonth) ?
+                     todayYear - birthdayYear : todayYear - birthdayYear-1;
+
+   alert("Age: " + age);
+
+         }
+
+
+      </script>
+   </head>
+   <body>
+      <!-- HTML -->
+      <header>
+        <h1 style="color:blue;">Find out your age!</h1>
+      </header>
+
+
+      <p>Select your  Birthdate: <input type="text" id="datepicker-13"></p>
+
+      <button onclick="myFunction()">Find my Age?</button>
+
+      <p id="demo"></p>
+
+
+
+   </body>
+</html>
